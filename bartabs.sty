@@ -1,0 +1,51 @@
+% Justin J. Meza's bar table data graphic package
+%
+% (c) Justin J. Meza
+%
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\RequirePackage{calc,xcolor}
+\ProvidesPackage{bartabs}
+  [2013/11/23 v0.01 provides a bar table data graphic]
+
+\newlength{\mbarheight}
+\setlength{\mbarheight}{0.85em}
+
+\newlength{\mbarwidth}
+\setlength{\mbarwidth}{4em}
+
+\newlength{\mbarerrlinelen}
+\setlength{\mbarerrlinelen}{0.4pt}
+
+% makes a bar with a percentage length
+\newcommand{\mbar}[1]{\makebox[\mbarwidth][l]{\rule{\mbarwidth*\real{#1}/100}{\mbarheight}}}
+
+% divides the first argument by the second argument and makes a bar with that
+% fraction of length
+\newcommand{\mbarnorm}[2]{\makebox[\mbarwidth][l]{\rule{\mbarwidth*\real{#1}/\real{#2}}{\mbarheight}}}
+
+\newlength{\errbar}
+
+% makes a bar with a percentage length and adds a error bars of a fraction of
+% the bar's length
+\newcommand{\mbarerr}[2]{\setlength{\errbar}{\mbarwidth*\real{#1}*\real{#2}/100}\makebox[\maxof{\mbarwidth}{\mbarwidth*\real{#1}/100+\errbar}][l]{\rule{\mbarwidth*\real{#1}/100}{\mbarheight}\raisebox{\mbarheight/2-\mbarerrlinelen/2}{\hspace{-\errbar}\textcolor{white}{\rule{\errbar}{\mbarerrlinelen}}\rule{\errbar}{\mbarerrlinelen}}}}
+
+% makes a bar with a normalized length and adds a error bars of a fraction of
+% the bar's length
+\newcommand{\mbarnormerr}[3]{\setlength{\errbar}{\mbarwidth*\real{#1}/\real{#2}*\real{#3}}\makebox[\maxof{\mbarwidth}{\mbarwidth*\real{#1}/\real{#2}+\errbar}][l]{\rule{\mbarwidth*\real{#1}/\real{#2}}{\mbarheight}\raisebox{\mbarheight/2-\mbarerrlinelen/2}{\hspace{-\errbar}\textcolor{white}{\rule{\errbar}{\mbarerrlinelen}}\rule{\errbar}{\mbarerrlinelen}}}}
+
+\newcommand{\mbarerrl}[2]{\setlength{\errbar}{\mbarwidth*\real{#1}*\real{#2}/100}\makebox[\mbarwidth][l]{\rule{\mbarwidth*\real{#1}/100}{\mbarheight}\raisebox{\mbarheight/2-\mbarerrlinelen/2}{\hspace{-\errbar}\textcolor{white}{\rule{\errbar}{\mbarerrlinelen}}}}}
+
+\newcommand{\mbarnormerrl}[3]{\setlength{\errbar}{\mbarwidth*\real{#1}*\real{#3}/\real{#2}}\makebox[\mbarwidth][l]{\rule{\mbarwidth*\real{#1}/\real{#2}}{\mbarheight}\raisebox{\mbarheight/2-\mbarerrlinelen/2}{\hspace{-\errbar}\textcolor{white}{\rule{\errbar}{\mbarerrlinelen}}}}}
+
+\newcommand{\mbarerrr}[2]{\setlength{\errbar}{\mbarwidth*\real{#1}*\real{#2}/100}\makebox[\maxof{\mbarwidth}{\mbarwidth*\real{#1}/100+\errbar}][l]{\rule{\mbarwidth*\real{#1}/100}{\mbarheight}\raisebox{\mbarheight/2-\mbarerrlinelen/2}{\rule{\errbar}{\mbarerrlinelen}}}}
+
+\newcommand{\mbarnormerrr}[3]{\setlength{\errbar}{\mbarwidth*\real{#1}*\real{#3}/\real{#2}}\makebox[\maxof{\mbarwidth}{\mbarwidth*\real{#1}/\real{#2}+\errbar}][l]{\rule{\mbarwidth*\real{#1}/\real{#2}}{\mbarheight}\raisebox{\mbarheight/2-\mbarerrlinelen/2}{\rule{\errbar}{\mbarerrlinelen}}}}
+
+\newlength{\errbartwo}
+\newcommand{\mbarerrlr}[3]{\setlength{\errbar}{\mbarwidth*\real{#1}*\real{#2}/100}\setlength{\errbartwo}{\mbarwidth*\real{#1}*\real{#3}/100}\makebox[\maxof{\mbarwidth}{\mbarwidth*\real{#1}/100+\errbartwo}][l]{\rule{\mbarwidth*\real{#1}/100}{\mbarheight}\raisebox{\mbarheight/2-\mbarerrlinelen/2}{\hspace{-\errbar}\textcolor{white}{\rule{\errbar}{\mbarerrlinelen}}\rule{\errbartwo}{\mbarerrlinelen}}}}
+
+\newcommand{\mbarnormerrlr}[4]{\setlength{\errbar}{\mbarwidth*\real{#1}*\real{#3}/\real{#2}}\setlength{\errbartwo}{\mbarwidth*\real{#1}*\real{#4}/\real{#2}}\makebox[\maxof{\mbarwidth}{\mbarwidth*\real{#1}/\real{#2}+\errbartwo}][l]{\rule{\mbarwidth*\real{#1}/\real{#2}}{\mbarheight}\raisebox{\mbarheight/2-\mbarerrlinelen/2}{\hspace{-\errbar}\textcolor{white}{\rule{\errbar}{\mbarerrlinelen}}\rule{\errbartwo}{\mbarerrlinelen}}}}
+
+\endinput
+%%
+%% End of file `bartabs.sty'.

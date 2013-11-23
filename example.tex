@@ -1,0 +1,208 @@
+\documentclass{article}
+\usepackage{bartabs}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{float}
+\floatstyle{plaintop}
+\restylefloat{table}
+\usepackage[justification=justified,singlelinecheck=false,tableposition=top]{caption}
+\usepackage{cprotect}
+\usepackage{booktabs}
+
+\newcommand{\bt}{{\tt bartabs}}
+\renewcommand{\tablename}{Example}
+
+\title{The \bt{} package}
+\author{Justin Meza \\ \url{justin.meza@gmail.com}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This package provides support for generating small, horizontal bar data graphics, in the spirit of the data graphics discussed from Edward Tufte's ``The Visual Display of Quantitative Information''.  For example, here is a bar set at 50\% of the default width with error bars set at 25\%: \mbarerr{50}{0.25}.
+\end{abstract}
+
+\section{Getting the package}
+
+The \bt{} package is hosted in a repository on GitHub at \url{github.com/justinmeza/bartabs}.  If you have {\tt git} installed, you can check out your own copy with the command:
+
+\begin{verbatim}
+  git clone git@github.com:justinmeza/bartabs.git
+\end{verbatim}
+
+\noindent
+There, you will find the style file as well as this example document.
+
+\section{Using the package}
+
+Once you obtain the style file, you must declare that you are using it in your document by adding the following line before \verb+\begin{document}+:
+
+\begin{verbatim}
+  \usepackage{bartabs}
+\end{verbatim}
+
+\noindent
+Doing so will let you use several commands to create bar data graphics, described next in examples.
+
+\begin{table}[H]
+\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+\verb+Lorem \mbar{50} ipsum.+ & Lorem \mbar{50} ipsum. \\
+\verb+Lorem \mbar{3.14159} ipsum.+ & Lorem \mbar{3.14159} ipsum. \\
+\end{tabular}
+\caption{A solid bar of a percentage of the default width.}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+\verb+Lorem \mbarnorm{50}{100} ipsum.+ & Lorem \mbarnorm{50}{100} ipsum. \\
+\verb+Lorem \mbarnorm{50}{75} ipsum.+ & Lorem \mbarnorm{50}{75} ipsum. \\
+\end{tabular}
+\caption{A solid bar of a normalized fraction of the default width.}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+\verb+Lorem \mbarerr{50}{0.5} ipsum.+ & Lorem \mbarerr{50}{0.5} ipsum. \\
+\verb+Lorem \mbarerr{100}{1.0} ipsum.+ & Lorem \mbarerr{100}{1.0} ipsum. \\
+\end{tabular}
+\caption{A solid bar of a percentage of the default width with left and right error lines of a fraction of that width.}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+\verb+Lorem \mbarnormerr{50}{100}{0.5} ipsum.+ & \\
+& Lorem \mbarnormerr{50}{100}{0.5} ipsum. \\
+\verb+Lorem \mbarnormerr{50}{75}{0.618} ipsum.+ & \\
+& Lorem \mbarnormerr{50}{75}{0.618} ipsum. \\
+\end{tabular}
+\caption{A solid bar of a normalized fraction of the default width with left and right error lines of a fraction of that width.}
+\end{table}
+
+\begin{table}[H]
+\setlength{\mbarwidth}{8em}
+\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+\verb+\setlength{\mbarwidth}{8em}+ & \\
+\verb+Lorem \mbar{50} ipsum+ & Lorem \mbar{50} ipsum. \\
+\verb+Lorem \mbar{3.14159} ipsum.+ & Lorem \mbar{3.14159} ipsum. \\
+\end{tabular}
+\cprotect\caption{The default width of the bars can be controlled with the \verb+\mbarwidth+ length.}
+\end{table}
+
+\begin{table}[H]
+\setlength{\mbarheight}{2.5em}
+\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+\verb+\setlength{\mbarheight}{2.5em}+ & \\
+\verb+Lorem \mbar{50} ipsum.+ & Lorem \mbar{50} ipsum. \\
+\verb+Lorem \mbar{3.14159}} ipsum.+ & Lorem \mbar{3.14159} ipsum. \\
+\end{tabular}
+\cprotect\caption{The default height of the bars can be controlled with the \verb+\mbarheight+ length.}
+\end{table}
+
+\begin{table}[H]
+\setlength{\mbarerrlinelen}{2pt}
+\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+\verb+\setlength{\mbarerrlinelen}{2pt}+ & \\
+\verb+Lorem \mbarerr{50}{0.5} ipsum.+ & Lorem \mbarerr{50}{0.5} ipsum. \\
+\verb+Lorem \mbarerr{100}{1.0} ipsum.+ & Lorem \mbarerr{100}{1.0} ipsum. \\
+\end{tabular}
+\cprotect\caption{The default thickness of the error line can be controlled with the \verb+\mbarerrlinelen+ length.}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+\verb+Lorem \mbarerrl{50}{0.5} ipsum.+ & Lorem \mbarerrl{50}{0.5} ipsum. \\
+\verb+Lorem \mbarerrl{100}{0.95} ipsum.+ & Lorem \mbarerrl{100}{0.95} ipsum. \\
+\end{tabular}
+\caption{A solid bar of a normalized fraction of the default width with a left error line a fraction of that width.}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+\verb+Lorem \mbarerrr{50}{0.25} ipsum.+ & Lorem \mbarerrr{50}{0.25} ipsum. \\
+\verb+Lorem \mbarerrr{100}{0.05} ipsum.+ & Lorem \mbarerrr{100}{0.05} ipsum. \\
+\end{tabular}
+\caption{A solid bar of a normalized fraction of the default width with a right error line a fraction of that width.}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+\verb+Lorem \mbarerrlr{50}{0.5}{0.25} ipsum.+ & \\
+& Lorem \mbarerrlr{50}{0.5}{0.25} ipsum. \\
+\verb+Lorem \mbarerrlr{100}{0.95}{0.05} ipsum.+ & \\
+& Lorem \mbarerrlr{100}{0.95}{0.05} ipsum. \\
+\end{tabular}
+\caption{A solid bar of a percentage of the default width with right and left error lines separate fraction of that width.}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+\verb+Lorem \mbarnormerrl{50}{100}{0.5} ipsum.+ & \\
+& Lorem \mbarnormerrl{50}{100}{0.5} ipsum. \\
+\verb+Lorem \mbarnormerrl{50}{75}{0.618} ipsum.+ & \\
+& Lorem \mbarnormerrl{50}{75}{0.618} ipsum. \\
+\end{tabular}
+\caption{A solid bar of a normalized fraction of the default width with a left error line of a fraction of that width.}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+\verb+Lorem \mbarnormerrr{50}{100}{0.5} ipsum.+ & \\
+& Lorem \mbarnormerrr{50}{100}{0.5} ipsum. \\
+\verb+Lorem \mbarnormerrr{50}{75}{0.618} ipsum.+ & \\
+& Lorem \mbarnormerrr{50}{75}{0.618} ipsum. \\
+\end{tabular}
+\caption{A solid bar of a normalized fraction of the default width with a right error line of a fraction of that width.}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+\verb+Lorem \mbarerrlr{50}{0.5}{0.25} ipsum.+ & \\
+& Lorem \mbarnormerrlr{50}{100}{0.5}{0.25} ipsum. \\
+\verb+Lorem \mbarerrlr{100}{0.95}{0.05} ipsum.+ & \\
+& Lorem \mbarnormerrlr{50}{75}{0.95}{0.05} ipsum. \\
+\end{tabular}
+\caption{A solid bar of a normalized fraction of the default width with right and left error lines separate fraction of that width.}
+\end{table}
+
+\begin{table}[H]
+\begin{verbatim}
+\begin{center}
+  \begin{tabular}{lrl}
+    \toprule
+      Name & \multicolumn{2}{c}{Datum} \\
+    \midrule
+      Lorem & $10\pm0.1$ & \mbarerr{10}{0.1} \\
+      Ipsum & $20\pm0.2$ & \mbarerr{20}{0.2} \\
+      Dolor & $40\pm0.3$ & \mbarerr{40}{0.3} \\
+      Sit   & $80\pm0.4$ & \mbarerr{80}{0.4} \\
+    \bottomrule
+    \end{tabular}
+\end{center}
+\end{verbatim}
+\begin{center}
+  \begin{tabular}{lrl}
+    \toprule
+      Name & \multicolumn{2}{c}{Datum} \\
+    \midrule
+      Lorem & $10\pm0.1$ & \mbarerr{10}{0.1} \\
+      Ipsum & $20\pm0.2$ & \mbarerr{20}{0.2} \\
+      Dolor & $40\pm0.3$ & \mbarerr{40}{0.3} \\
+      Sit   & $80\pm0.4$ & \mbarerr{80}{0.4} \\
+    \bottomrule
+    \end{tabular}
+\end{center}
+\caption{Bars can be used to provide a simple illustration of scientific data in a table.}
+\end{table}
+
+\section{To Do}
+
+\begin{itemize}
+
+\item Right now, the source code is incredibly ugly.  It needs to be cleaned up and make more modular.
+
+\item Colored bars and error lines could be interesting to implement.
+
+\end{itemize}
+
+\end{document}
