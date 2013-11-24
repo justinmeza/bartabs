@@ -1,6 +1,6 @@
-% Justin J. Meza's bar table data graphic package
+% Justin J. Meza's package for generating small, horizontal bar data graphics.
 %
-% (c) Justin J. Meza
+% (c) 2013 Justin J. Meza
 %
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 \RequirePackage{calc,xcolor}
@@ -47,5 +47,5 @@
 \newcommand{\mbarnormerrlr}[4]{\setlength{\errbar}{\mbarwidth*\real{#1}*\real{#3}/\real{#2}}\setlength{\errbartwo}{\mbarwidth*\real{#1}*\real{#4}/\real{#2}}\makebox[\maxof{\mbarwidth}{\mbarwidth*\real{#1}/\real{#2}+\errbartwo}][l]{\rule{\mbarwidth*\real{#1}/\real{#2}}{\mbarheight}\raisebox{\mbarheight/2-\mbarerrlinelen/2}{\hspace{-\errbar}\textcolor{white}{\rule{\errbar}{\mbarerrlinelen}}\rule{\errbartwo}{\mbarerrlinelen}}}}
 
 \endinput
-%%
-%% End of file `bartabs.sty'.
+%
+% End of file `bartabs.sty'.

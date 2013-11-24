@@ -6,6 +6,7 @@
 \floatstyle{plaintop}
 \restylefloat{table}
 \usepackage[justification=justified,singlelinecheck=false,tableposition=top]{caption}
+\captionsetup[table]{labelfont=bf,labelsep=newline}
 \usepackage{cprotect}
 \usepackage{booktabs}
 
@@ -13,14 +14,14 @@
 \renewcommand{\tablename}{Example}
 
 \title{The \bt{} package}
-\author{Justin Meza \\ \url{justin.meza@gmail.com}}
+\author{Justin J. Meza \\ \url{justin.meza@gmail.com}}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-This package provides support for generating small, horizontal bar data graphics, in the spirit of the data graphics discussed from Edward Tufte's ``The Visual Display of Quantitative Information''.  For example, here is a bar set at 50\% of the default width with error bars set at 25\%: \mbarerr{50}{0.25}.
+This package provides support for generating small, horizontal bar data graphics, in the spirit of the data graphics discussed starting on p.~123 of Edward Tufte's {\it The Visual Display of Quantitative Information} (Cheshire, Connecticut, 2007).  For example, here is a bar set at 50\% of the default width with error bars set at 25\%: \mbarerr{50}{0.25}.
 \end{abstract}
 
 \section{Getting the package}
