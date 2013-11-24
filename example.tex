@@ -21,7 +21,7 @@
 \maketitle
 
 \begin{abstract}
-This package provides support for generating small, horizontal bar data graphics, in the spirit of the data graphics discussed starting on p.~123 of Edward Tufte's {\it The Visual Display of Quantitative Information} (Cheshire, Connecticut, 2007).  For example, here is a bar set at 50\% of the default width with error bars set at 25\%: \mbarerr{50}{0.25}.
+This package provides support for generating small, horizontal bar data graphics, in the spirit of those discussed starting on p.~123 of Edward Tufte's {\it The Visual Display of Quantitative Information} (Cheshire, Connecticut, 2007).  For example, here is a bar set at 50\% of the default width with error bars set at 25\%: \mbarerr{50}{0.25}.
 \end{abstract}
 
 \section{Getting the package}
@@ -158,9 +158,9 @@ Doing so will let you use several commands to create bar data graphics, describe
 
 \begin{table}[H]
 \begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
-\verb+Lorem \mbarerrlr{50}{0.5}{0.25} ipsum.+ & \\
+\verb+Lorem \mbarnormerrlr{50}{100}{0.5}{0.25} ipsum.+ & \\
 & Lorem \mbarnormerrlr{50}{100}{0.5}{0.25} ipsum. \\
-\verb+Lorem \mbarerrlr{100}{0.95}{0.05} ipsum.+ & \\
+\verb+Lorem \mbarnormerrlr{50}{75}{0.95}{0.05} ipsum.+ & \\
 & Lorem \mbarnormerrlr{50}{75}{0.95}{0.05} ipsum. \\
 \end{tabular}
 \caption{A solid bar of a normalized fraction of the default width with right and left error lines separate fraction of that width.}
